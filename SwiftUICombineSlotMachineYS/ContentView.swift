@@ -22,12 +22,21 @@ class SlotViewModel: ObservableObject {
         
         $running
             .receive(on: RunLoop.main)
+            .map {
+                guard !$0 && self.gameStarted else { return "Крути эту хрень, чувак!" }
+                return self.slot1Emoji == self.slot2Emoji && self.slot2Emoji == self.slot3Emoji ? "Победааааа!" : "Не повезло, крути еще!"
+            }
+            .assign(to: \.titleText, on: self)
+            .store(in: &cancellables)
+        
+        $running
+            .receive(on: RunLoop.main)
             .map { $0 == true ? "Стоп!" : "Крутить!" }
             .assign(to: \.buttonText, on: self)
             .store(in: &cancellables)
     }
     
-    func randomize() {
+    private func randomize() {
         guard running else { return }
         slot1Emoji = emojiSourceArray[Int.random(in: 0...emojiSourceArray.count - 1)]
         slot2Emoji = emojiSourceArray[Int.random(in: 0...emojiSourceArray.count - 1)]
@@ -43,7 +52,7 @@ class SlotViewModel: ObservableObject {
     @Published var slot2Emoji = "🦠"
     @Published var slot3Emoji = "🍋"
     
-    @Published var titleText = "Крути эту хрень, чувак!"
+    @Published var titleText = ""
     @Published var buttonText = ""
 }
 
@@ -78,8 +87,8 @@ struct ContentView: View {
             }
 
             Spacer()
-            Button(action: { slotViewModel.running.toggle() }, label: { Text(slotViewModel.buttonText) })
+            Button(action: { slotViewModel.running.toggle(); slotViewModel.gameStarted = true }, label: { Text(slotViewModel.buttonText) })
             Spacer()
-        }.onAppear { slotViewModel.gameStarted = true }
+        }
     }
 }
