@@ -11,10 +11,15 @@ import Combine
 class SlotViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let emojiSourceArray = ["🍋", "🍒", "🦠"]
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
     
     init() {
         randomize()
+        
+        timer
+            .receive(on: RunLoop.main)
+            .sink { _ in self.running ? self.randomize() : nil }
+            .store(in: &cancellables)
         
         $running
             .receive(on: RunLoop.main)
@@ -40,6 +45,20 @@ class SlotViewModel: ObservableObject {
     @Published var buttonText = ""
 }
 
+struct SlotView <Content: View>: View {
+    var content: () -> Content
+    
+    init(@ViewBuilder content: @escaping () -> Content) { self.content = content }
+    
+    var body: some View {
+            content()
+            .font(.system(size: 64.0))
+            .transition(.asymmetric(insertion: .move(edge: .top), removal: .move(edge: .bottom)))
+            .animation(.easeInOut)
+            .id(UUID())
+    }
+}
+
 struct ContentView: View {
     @ObservedObject private var slotViewModel = SlotViewModel()
     
@@ -47,23 +66,17 @@ struct ContentView: View {
 
         VStack {
             Spacer()
-            
             Text("Крути эту хрень, чувак...")
-            
             Spacer()
-            
+
             HStack {
-                Text(slotViewModel.slot1Emoji).font(.largeTitle)
-                Spacer().frame(width: 25)
-                Text(slotViewModel.slot2Emoji).font(.largeTitle)
-                Spacer().frame(width: 25)
-                Text(slotViewModel.slot3Emoji).font(.largeTitle)
+                SlotView { Text(slotViewModel.slot1Emoji) }
+                SlotView { Text(slotViewModel.slot2Emoji) }
+                SlotView { Text(slotViewModel.slot3Emoji) }
             }
 
             Spacer()
-            
             Button(action: { slotViewModel.running.toggle() }, label: { Text(slotViewModel.buttonText) })
-            
             Spacer()
         }
     }
