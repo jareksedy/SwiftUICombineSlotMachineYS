@@ -10,15 +10,14 @@ import Combine
 
 class SlotViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
+    
     private let emojiSourceArray = ["🍋", "🍒", "🦠"]
-    private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
     init() {
-        randomize()
-        
         timer
             .receive(on: RunLoop.main)
-            .sink { _ in self.running ? self.randomize() : nil }
+            .sink { _ in self.randomize() }
             .store(in: &cancellables)
         
         $running
@@ -29,6 +28,7 @@ class SlotViewModel: ObservableObject {
     }
     
     func randomize() {
+        guard running else { return }
         slot1Emoji = emojiSourceArray[Int.random(in: 0...emojiSourceArray.count - 1)]
         slot2Emoji = emojiSourceArray[Int.random(in: 0...emojiSourceArray.count - 1)]
         slot3Emoji = emojiSourceArray[Int.random(in: 0...emojiSourceArray.count - 1)]
@@ -36,12 +36,14 @@ class SlotViewModel: ObservableObject {
     
     // input
     @Published var running = false
+    @Published var gameStarted = false
     
     // output
-    @Published var slot1Emoji = ""
-    @Published var slot2Emoji = ""
-    @Published var slot3Emoji = ""
+    @Published var slot1Emoji = "🍒"
+    @Published var slot2Emoji = "🦠"
+    @Published var slot3Emoji = "🍋"
     
+    @Published var titleText = "Крути эту хрень, чувак!"
     @Published var buttonText = ""
 }
 
@@ -66,7 +68,7 @@ struct ContentView: View {
 
         VStack {
             Spacer()
-            Text("Крути эту хрень, чувак...")
+            Text(slotViewModel.titleText)
             Spacer()
 
             HStack {
@@ -78,6 +80,6 @@ struct ContentView: View {
             Spacer()
             Button(action: { slotViewModel.running.toggle() }, label: { Text(slotViewModel.buttonText) })
             Spacer()
-        }
+        }.onAppear { slotViewModel.gameStarted = true }
     }
 }
