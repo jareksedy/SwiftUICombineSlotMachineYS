@@ -21,21 +21,24 @@ class SwiftUICombineSlotMachineYSTests: XCTestCase {
         cancellables = []
     }
     
-    func test_collect() {
-//        // Given
-//        let values = [0, 1, 2]
-//        let publisher = values.publisher
-//        
-//        // When
-//        publisher
-//            .collect()
-//            .sink(receiveValue: {
-//                // Then
-//                XCTAssert(
-//                    $0 == values,
-//                    "Result was expected to be \(values) but was \($0)"
-//                )
-//            })
-//            .store(in: &cancellables)
+    // Тест изменения текста кнопки в зависимости от состояния вьюмодели
+    func testButtonTextChanged() {
+        // Given
+        let expected = "Стоп!"
+        
+        viewModel.$buttonText
+            .sink {
+                
+            }
+        
+        viewModel.$running
+            .sink { _ in
+                XCTAssertEqual(self.viewModel.buttonText, expected)
+            }
+            .store(in: &cancellables)
+        
+        // When
+        viewModel.gameStarted = true
+        viewModel.running = true
     }
 }
