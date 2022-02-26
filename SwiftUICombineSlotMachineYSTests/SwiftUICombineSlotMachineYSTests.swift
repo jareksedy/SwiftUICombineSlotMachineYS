@@ -25,7 +25,7 @@ class SwiftUICombineSlotMachineYSTests: XCTestCase {
     func testButtonTextChanged() {
         // Given
         let expected = "Крутить!"
-        let expectation = XCTestExpectation(description: "Тест кнопки.")
+        let expectation = XCTestExpectation()
         
         viewModel
             .$buttonText
@@ -44,7 +44,7 @@ class SwiftUICombineSlotMachineYSTests: XCTestCase {
     func testWin() {
         // Given
         let expected = "Победааааа!"
-        let expectation = XCTestExpectation(description: "Тест текста в тайтле.")
+        let expectation = XCTestExpectation()
         
         viewModel
             .$titleText
