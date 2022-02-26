@@ -24,21 +24,19 @@ class SwiftUICombineSlotMachineYSTests: XCTestCase {
     // Тест изменения текста кнопки в зависимости от состояния вьюмодели
     func testButtonTextChanged() {
         // Given
-        let expected = "Стоп!"
+        let expected = "Крутить!"
+        let expectation = XCTestExpectation(description: "Тест кнопки.")
         
-        viewModel.$buttonText
-            .sink {
-                
-            }
-        
-        viewModel.$running
-            .sink { _ in
-                XCTAssertEqual(self.viewModel.buttonText, expected)
-            }
+        viewModel
+            .$buttonText
+            .dropFirst() // дропаем первое значение, заданное при инициализации
+            .sink { value in XCTAssertEqual(value, expected); expectation.fulfill() }
             .store(in: &cancellables)
         
         // When
-        viewModel.gameStarted = true
-        viewModel.running = true
+        viewModel.running = false
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
     }
 }
