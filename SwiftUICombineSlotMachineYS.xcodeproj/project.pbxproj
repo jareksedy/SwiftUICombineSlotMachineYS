@@ -11,7 +11,18 @@
 		CAA77FCB27C0DEF60052E43E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA77FCA27C0DEF60052E43E /* ContentView.swift */; };
 		CAA77FCD27C0DEF70052E43E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA77FCC27C0DEF70052E43E /* Assets.xcassets */; };
 		CAA77FD027C0DEF70052E43E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA77FCF27C0DEF70052E43E /* Preview Assets.xcassets */; };
+		CAB7CCA127C9DFEB0022761E /* SwiftUICombineSlotMachineYSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7CCA027C9DFEB0022761E /* SwiftUICombineSlotMachineYSTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAB7CC9B27C9DFB00022761E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAA77FBD27C0DEF60052E43E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAA77FC427C0DEF60052E43E;
+			remoteInfo = SwiftUICombineSlotMachineYS;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CAA77FC527C0DEF60052E43E /* SwiftUICombineSlotMachineYS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICombineSlotMachineYS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,10 +30,19 @@
 		CAA77FCA27C0DEF60052E43E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CAA77FCC27C0DEF70052E43E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAA77FCF27C0DEF70052E43E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CAB7CC9727C9DFB00022761E /* SwiftUICombineSlotMachineYSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUICombineSlotMachineYSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB7CCA027C9DFEB0022761E /* SwiftUICombineSlotMachineYSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUICombineSlotMachineYSTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CAA77FC227C0DEF60052E43E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB7CC9427C9DFB00022761E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				CAA77FC727C0DEF60052E43E /* SwiftUICombineSlotMachineYS */,
+				CAB7CC9827C9DFB00022761E /* SwiftUICombineSlotMachineYSTests */,
 				CAA77FC627C0DEF60052E43E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				CAA77FC527C0DEF60052E43E /* SwiftUICombineSlotMachineYS.app */,
+				CAB7CC9727C9DFB00022761E /* SwiftUICombineSlotMachineYSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +89,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CAB7CC9827C9DFB00022761E /* SwiftUICombineSlotMachineYSTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAB7CCA027C9DFEB0022761E /* SwiftUICombineSlotMachineYSTests.swift */,
+			);
+			path = SwiftUICombineSlotMachineYSTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,6 +117,24 @@
 			productReference = CAA77FC527C0DEF60052E43E /* SwiftUICombineSlotMachineYS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CAB7CC9627C9DFB00022761E /* SwiftUICombineSlotMachineYSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAB7CC9D27C9DFB00022761E /* Build configuration list for PBXNativeTarget "SwiftUICombineSlotMachineYSTests" */;
+			buildPhases = (
+				CAB7CC9327C9DFB00022761E /* Sources */,
+				CAB7CC9427C9DFB00022761E /* Frameworks */,
+				CAB7CC9527C9DFB00022761E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAB7CC9C27C9DFB00022761E /* PBXTargetDependency */,
+			);
+			name = SwiftUICombineSlotMachineYSTests;
+			productName = SwiftUICombineSlotMachineYSTests;
+			productReference = CAB7CC9727C9DFB00022761E /* SwiftUICombineSlotMachineYSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +147,10 @@
 				TargetAttributes = {
 					CAA77FC427C0DEF60052E43E = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					CAB7CC9627C9DFB00022761E = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = CAA77FC427C0DEF60052E43E;
 					};
 				};
 			};
@@ -116,6 +168,7 @@
 			projectRoot = "";
 			targets = (
 				CAA77FC427C0DEF60052E43E /* SwiftUICombineSlotMachineYS */,
+				CAB7CC9627C9DFB00022761E /* SwiftUICombineSlotMachineYSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -127,6 +180,13 @@
 			files = (
 				CAA77FD027C0DEF70052E43E /* Preview Assets.xcassets in Resources */,
 				CAA77FCD27C0DEF70052E43E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB7CC9527C9DFB00022761E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +202,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAB7CC9327C9DFB00022761E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB7CCA127C9DFEB0022761E /* SwiftUICombineSlotMachineYSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAB7CC9C27C9DFB00022761E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAA77FC427C0DEF60052E43E /* SwiftUICombineSlotMachineYS */;
+			targetProxy = CAB7CC9B27C9DFB00022761E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CAA77FD127C0DEF70052E43E /* Debug */ = {
@@ -319,6 +395,44 @@
 			};
 			name = Release;
 		};
+		CAB7CC9E27C9DFB00022761E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NK62H99X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.SwiftUICombineSlotMachineYSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUICombineSlotMachineYS.app/SwiftUICombineSlotMachineYS";
+			};
+			name = Debug;
+		};
+		CAB7CC9F27C9DFB00022761E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NK62H99X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.SwiftUICombineSlotMachineYSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUICombineSlotMachineYS.app/SwiftUICombineSlotMachineYS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -336,6 +450,15 @@
 			buildConfigurations = (
 				CAA77FD427C0DEF70052E43E /* Debug */,
 				CAA77FD527C0DEF70052E43E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAB7CC9D27C9DFB00022761E /* Build configuration list for PBXNativeTarget "SwiftUICombineSlotMachineYSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAB7CC9E27C9DFB00022761E /* Debug */,
+				CAB7CC9F27C9DFB00022761E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
