@@ -39,4 +39,28 @@ class SwiftUICombineSlotMachineYSTests: XCTestCase {
         // Then
         wait(for: [expectation], timeout: 1)
     }
+    
+    // Тест логики победы, когда выпадает три одинаковых эмодзи подряд
+    func testWin() {
+        // Given
+        let expected = "Победааааа!"
+        let expectation = XCTestExpectation(description: "Тест текста в тайтле.")
+        
+        viewModel
+            .$titleText
+            .dropFirst()
+            .sink { value in XCTAssertEqual(value, expected); expectation.fulfill() }
+            .store(in: &cancellables)
+        
+        // When
+        viewModel.slot1Emoji = "🦠"
+        viewModel.slot2Emoji = "🦠"
+        viewModel.slot3Emoji = "🦠"
+        
+        viewModel.running = false
+        viewModel.gameStarted = true
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+    }
 }
